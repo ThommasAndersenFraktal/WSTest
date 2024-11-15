@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "WSTestDatasett3"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "22fd749f-c0fa-4689-b0dc-fc7967a185fc"
+  }
+}
