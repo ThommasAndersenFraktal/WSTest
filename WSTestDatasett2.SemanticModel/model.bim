@@ -1,0 +1,147 @@
+{
+  "compatibilityLevel": 1550,
+  "model": {
+    "annotations": [
+      {
+        "name": "PBI_QueryOrder",
+        "value": "[\"Fakt_Verdi\",\"Dim_Tull\"]"
+      },
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "1"
+      },
+      {
+        "name": "PBIDesktopVersion",
+        "value": "2.137.1102.0 (24.10)"
+      }
+    ],
+    "culture": "nb-NO",
+    "cultures": [
+      {
+        "name": "nb-NO",
+        "linguisticMetadata": {
+          "content": {
+            "Language": "en-US",
+            "Version": "1.0.0"
+          },
+          "contentType": "json"
+        }
+      }
+    ],
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "relationships": [
+      {
+        "name": "c687fb79-f83e-f226-46bd-4b535d6ea9b7",
+        "crossFilteringBehavior": "bothDirections",
+        "fromCardinality": "one",
+        "fromColumn": "Tull",
+        "fromTable": "Dim_Tull",
+        "toColumn": "Beskrivelse",
+        "toTable": "Fakt_Verdi"
+      }
+    ],
+    "sourceQueryCulture": "nb-NO",
+    "tables": [
+      {
+        "name": "Fakt_Verdi",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Beskrivelse",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "7a37e236-c4f1-47b6-823c-15d1337e985a",
+            "sourceColumn": "Beskrivelse",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Verdi",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "90fe4056-7004-4c70-96e0-e988289d4f5e",
+            "sourceColumn": "Verdi",
+            "summarizeBy": "sum"
+          }
+        ],
+        "lineageTag": "357b68f2-36a3-4a6b-9b07-3c2b4dd0d21b",
+        "partitions": [
+          {
+            "name": "Fakt_Verdi",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Kilde = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText(\"i45WcnRyVtJRMlSK1YlWcnZxBbKNwGw3dw8g21gpNhYA\", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Beskrivelse = _t, Verdi = _t]),",
+                "    #\"Endret type\" = Table.TransformColumnTypes(Kilde,{{\"Beskrivelse\", type text}, {\"Verdi\", Int64.Type}})",
+                "in",
+                "    #\"Endret type\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Dim_Tull",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Tull",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "a1eac380-8aa7-48cf-8fef-0b45e7ccf359",
+            "sourceColumn": "Tull",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "c8156ddc-de5b-4b25-a327-fda940d8d92a",
+        "partitions": [
+          {
+            "name": "Dim_Tull",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Kilde = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText(\"i45WckosSlUoKc3JUYqNBQA=\", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Tull = _t]),",
+                "    #\"Endret type\" = Table.TransformColumnTypes(Kilde,{{\"Tull\", type text}})",
+                "in",
+                "    #\"Endret type\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
